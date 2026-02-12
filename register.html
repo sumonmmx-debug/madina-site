@@ -1,51 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register – Madina Al Jamal</title>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;margin:0}
+    .wrap{max-width:420px;margin:40px auto;background:#fff;padding:24px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+    h2{margin:0 0 15px;text-align:center}
+    label{display:block;margin:12px 0 6px;font-size:14px}
+    input{width:100%;padding:12px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box}
+    button{width:100%;margin-top:16px;padding:12px;background:#0f2a44;color:#fff;border:none;border-radius:4px;font-size:16px;cursor:pointer}
+    button:hover{background:#12385f}
+    .msg{margin-top:14px;font-size:14px;min-height:18px}
+    .links{margin-top:12px;text-align:center;font-size:14px}
+    .links a{color:#0f2a44;text-decoration:none}
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <h2>Business Registration</h2>
+
+    <label>Business Name</label>
+    <input type="text" id="business" placeholder="Company name" />
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="email@example.com" />
+
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Minimum 6 characters" />
+
+    <label>Trade License Number</label>
+    <input type="text" id="license" placeholder="UAE Trade License" />
+
+    <label>Phone Number</label>
+    <input type="text" id="phone" placeholder="+971..." />
+
+    <button id="btn" onclick="register()">Register</button>
+
+    <div class="msg" id="msg"></div>
+
+    <div class="links">
+      Already registered? <a href="login.html">Login</a>
+    </div>
+  </div>
+
 <script>
-  // ✅ Supabase API থেকে Project URL + anon public key বসাবেন
-  const supabaseUrl = "https://dppgeenxzaxjmzmwzllk.supabase.co";
-  const supabaseKey = "PASTE_YOUR_ANON_PUBLIC_KEY_HERE"; // <-- eyJ... key
+  // ✅ 1) শুধু এখানেই Supabase URL/Key বসাবেন
+  const supabaseUrl = "https://YOUR-PROJECT.supabase.co";
+  const supabaseKey = "YOUR_SUPABASE_PUBLISHABLE_KEY";
   const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-  async function register() {
+  async function register(){
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const password = document.getElementById("password").value.trim();
     const business = document.getElementById("business").value.trim();
     const license = document.getElementById("license").value.trim();
     const phone = document.getElementById("phone").value.trim();
+
     const msg = document.getElementById("msg");
+    const btn = document.getElementById("btn");
 
-    msg.innerHTML = "Processing registration...";
-
-    // ✅ Basic validation
-    if (!business || !email || !password || !license || !phone) {
+    // basic validation
+    if(!business || !email || !password || !license || !phone){
       msg.innerHTML = "❌ Please fill all fields.";
       return;
     }
-    if (password.length < 6) {
+    if(password.length < 6){
       msg.innerHTML = "❌ Password must be at least 6 characters.";
       return;
     }
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
+    msg.innerHTML = "⏳ Processing registration...";
+    btn.disabled = true;
+
+    try{
+      // ✅ 2) Auth user create
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            business_name: business,
+            trade_license: license,
+            phone: phone,
+            approved: false
+          }
+        }
+      });
+
+      if(error){
+        msg.innerHTML = "❌ " + error.message;
+        btn.disabled = false;
+        return;
+      }
+
+      // ✅ 3) buyer_applications টেবিলে insert
+      // (এটা কাজ করতে হলে buyer_applications টেবিলে RLS policy দিয়ে insert allow থাকতে হবে)
+      const { error: insertError } = await supabase
+        .from("buyer_applications")
+        .insert([{
           business_name: business,
+          email: email,
           trade_license: license,
           phone: phone,
-          approved: false
-        }
+          status: "pending"
+        }]);
+
+      if(insertError){
+        msg.innerHTML = "⚠️ User created, but application save failed: " + insertError.message;
+        btn.disabled = false;
+        return;
       }
-    });
 
-    if (error) {
-      msg.innerHTML = "❌ " + error.message;
-      return;
+      msg.innerHTML = "✅ Registration submitted. Check email to confirm (if required).";
+      
+      // ✅ চাইলে 2 সেকেন্ড পর login page এ পাঠিয়ে দেবে
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2000);
+
+    }catch(e){
+      msg.innerHTML = "❌ Unexpected error: " + (e?.message || e);
+      btn.disabled = false;
     }
-
-    // ✅ Success: usually email confirmation required
-    msg.innerHTML = "✅ Registration submitted. Please check your email to confirm.";
-
-    // চাইলে auto redirect:
-    // setTimeout(() => { window.location.href = "login.html"; }, 1500);
   }
 </script>
+
+</body>
+</html>
