@@ -3,174 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Madina Al Jamal Goods Wholesalers LLC</title>
+  <title>Madina Al Jamal Goods Wholesalers Co. LLC</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      color: #222;
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f6f8;color:#111}
+    header{background:#0f2a44;color:#fff;padding:18px 14px;text-align:center}
+    header h1{margin:0;font-size:20px}
+    header p{margin:6px 0 0;font-size:13px;opacity:.9}
+
+    .container{max-width:1100px;margin:16px auto;padding:0 14px}
+    .topbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:10px 0 14px}
+    .left{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .btn{
+      border:0;background:#0f2a44;color:#fff;padding:10px 14px;border-radius:10px;
+      font-size:14px;cursor:pointer
+    }
+    .btn.secondary{background:#fff;color:#0f2a44;border:1px solid #d7dde5}
+    .hint{font-size:13px;color:#555}
+
+    .hidden{display:none}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+
+    .card{
+      background:#fff;border-radius:14px;padding:14px;border:1px solid #eef1f6;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+      cursor:pointer;transition:transform .08s ease;
+      display:flex;flex-direction:column;gap:8px
+    }
+    .card:active{transform:scale(.99)}
+    .icon{
+      height:52px;width:52px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      background:#eef4fb;color:#0f2a44;font-weight:800;font-size:16px
+    }
+    .title{margin:0;font-size:14px}
+    .sub{margin:0;font-size:12px;color:#666}
+    .tag{
+      display:inline-block;font-size:11px;padding:4px 8px;border-radius:999px;
+      background:#eef4fb;color:#0f2a44;border:1px solid #dbe7f6;width:max-content
     }
 
-    header {
-      background: #0f2a44;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
+    .productImg{
+      width:100%;height:120px;object-fit:contain;border-radius:12px;
+      background:#f6f8fb;border:1px solid #eef1f6
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 22px;
+    .panel{
+      background:#fff;border:1px solid #eef1f6;border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,.04);
+      padding:14px;line-height:1.7;font-size:14px
     }
+    .panel a{color:#0f2a44;text-decoration:none}
+    .sectionTitle{margin:12px 0 10px;font-size:16px}
 
-    header p {
-      margin: 5px 0 0;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .notice {
-      background: #fff3cd;
-      border: 1px solid #ffeeba;
-      padding: 12px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
-    }
-
-    .product {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    .product img {
-      width: 100%;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-
-    .product h3 {
-      font-size: 14px;
-      margin: 0 0 8px;
-    }
-
-    .price {
-      font-size: 13px;
-      color: #999;
-    }
-
-    .login-box {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    .login-box h2 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    .login-box p {
-      font-size: 14px;
-      color: #555;
-    }
-
-    footer {
-      background: #0f2a44;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      margin-top: 30px;
-    }
+    footer{margin-top:18px;background:#0f2a44;color:#fff;text-align:center;padding:14px;font-size:12px}
   </style>
 </head>
 
 <body>
-
   <header>
-    <h1>Madina Al Jamal Goods Wholesalers Co. LLC</h1>
-    <p>UAE Wholesale Supplier</p>
+    <h1 id="companyName">Madina Al Jamal Goods Wholesalers Co. LLC</h1>
+    <p>UAE Wholesale Supplier • Tap category → tap product → WhatsApp</p>
   </header>
 
   <div class="container">
 
-    <div class="login-box">
-      <h2>Registered Buyers Only</h2>
-      <p>
-        Prices are visible only after login and business verification.<br>
-        <a href="login.html" style="
-  display:inline-block;
-  margin-top:12px;
-  padding:10px 18px;
-  background:#0f2a44;
-  color:#fff;
-  text-decoration:none;
-  border-radius:4px;
-">
-Login / Register
-</a>
-        Please register using valid trade license details.
-      </p>
+    <div class="topbar">
+      <div class="left">
+        <button class="btn secondary" id="backBtn" onclick="goHome()" style="display:none;">← Back</button>
+        <button class="btn" onclick="toggleContact()">Contact</button>
+      </div>
+      <div class="hint" id="pageHint">Select a category to view products.</div>
     </div>
 
-    <div class="notice">
-      📌 Wholesale prices are hidden.  
-      Login required with approved business account.
+    <!-- Contact panel -->
+    <div id="contactBox" class="panel hidden">
+      <div class="sectionTitle">Contact</div>
+      <div><b>Company:</b> <span id="cCompany">Madina Al Jamal Goods Wholesalers Co. LLC</span></div>
+      <div><b>Address:</b> <span id="cAddress"></span></div>
+      <div><b>Phone / WhatsApp:</b> <a id="cWhatsApp" href="#" target="_blank"></a></div>
+      <div><b>Email:</b> <a id="cEmail" href="#" target="_blank"></a></div>
+      <div><b>Website:</b> <a id="cWebsite" href="#" target="_blank"></a></div>
     </div>
 
-    <div class="products">
+    <!-- Categories view -->
+    <div id="categoriesView">
+      <div class="sectionTitle">Categories</div>
+      <div class="grid" id="categoriesGrid"></div>
+    </div>
 
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="Soap">
-        <h3>Soap</h3>
-        <div class="price">Login to view price</div>
-      </div>
-
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="Toothpaste">
-        <h3>Toothpaste</h3>
-        <div class="price">Login to view price</div>
-      </div>
-
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="Hair Oil">
-        <h3>Hair Oil</h3>
-        <div class="price">Login to view price</div>
-      </div>
-
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="Shaving Razor">
-        <h3>Shaving Razor</h3>
-        <div class="price">Login to view price</div>
-      </div>
-
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="Face Wash">
-        <h3>Face Wash</h3>
-        <div class="price">Login to view price</div>
-      </div>
-
+    <!-- Products view -->
+    <div id="productsView" class="hidden">
+      <div class="sectionTitle" id="productsTitle">Products</div>
+      <div class="grid" id="productsGrid"></div>
     </div>
 
   </div>
@@ -179,6 +105,169 @@ Login / Register
     📞 Contact: +971 55 560 3858 <br>
     © 2026 Madina Al Jamal Goods Wholesalers Co. LLC
   </footer>
+
+<script>
+  // ====== BUSINESS SETTINGS ======
+  const COMPANY_NAME = "Madina Al Jamal goods wholesaler co LLC";
+  const ADDRESS = "22nd floor, Unit 2204, Iris Bay Tower, Business Bay - Dubai, PO Box 624699";
+  const EMAIL = "madinaaljamal.business@gmail.com";
+  const WEBSITE = "https://madina-site-sigma.vercel.app";
+
+  // WhatsApp number without + and spaces
+  const WHATSAPP_NUMBER = "971555603858";
+
+  // ====== CATEGORIES & PRODUCTS ======
+  const DATA = [
+    {
+      id:"beverages",
+      name:"Beverages",
+      iconText:"B",
+      products:[
+        "Pepsi","7up","Coca-Cola","Mountain Dew","Sprite","Fanta","Marina","BoomBoom","Red Bull","Tiger","String","PowerHorse","Barbican"
+      ]
+    },
+    {
+      id:"cosmetics",
+      name:"Cosmetics & Personal Care",
+      iconText:"C",
+      products:[
+        "Soap: Lux","Soap: Dove","Soap: Lifebuoy","Soap: Himalaya","Soap: Dettol","Soap: Johnson","Soap: Cinthol","Soap: Santhor","Soap: Chandrika","Soap: Medimix","Soap: Pears","Soap: Jo","Soap: Imperial",
+        "Toothpaste: Close-up","Toothpaste: Signal","Toothpaste: Colgate","Toothpaste: Sensodyne","Toothpaste: Pepsodent","Toothpaste: Himalaya","Toothpaste: Dabur","Toothpaste: Marvis",
+        "Hair Oil: Navaratna","Hair Oil: Vatika","Hair Oil: Parachute","Hair Oil: Dabur Amla","Hair Oil: 777 Oil","Hair Oil: 555 Oil",
+        "Hair Cream: Vatika","Hair Cream: Parachute","Hair Cream: Sunsilk","Hair Cream: Himalaya",
+        "Face Cream: Ponds","Face Cream: Nivea","Face Cream: Fair & Lovely","Face Cream: Fair & Handsome","Face Cream: Emani Handsome",
+        "Lip Gel",
+        "Shaving Razor: Gillette Presto","Shaving Razor: Lord Plastic Razor","Shaving Razor: Lord Steel Razor","Shaving Razor: Wetwell Razor","Shaving Razor: Max","Shaving Razor: Gillette 3 in 1",
+        "Shaving Foam: Gillette",
+        "Brush: Dentex","Brush: Goral","Brush: Colgate","Brush: Sensodyne","Brush: Oral-B",
+        "Nail Cutter",
+        "Playing Card",
+        "Face Wash: Ponds","Face Wash: Nivea","Face Wash: Simple","Face Wash: Garnier",
+        "Hair Color"
+      ]
+    },
+    { id:"electronics", name:"Electronics & Appliances", iconText:"E", products:["(Add products here)"] },
+    { id:"cleaning", name:"Cleaning & Household", iconText:"H", products:["(Add products here)"] },
+    { id:"stationery", name:"Stationery & School Supplies", iconText:"S", products:["(Add products here)"] },
+    { id:"toys", name:"Toys & Outdoor", iconText:"T", products:["(Add products here)"] },
+    { id:"chocolate", name:"Chocolate", iconText:"🍫", products:["(Add products here)"] }
+  ];
+
+  // ====== UI REFS ======
+  const categoriesGrid = document.getElementById("categoriesGrid");
+  const productsGrid = document.getElementById("productsGrid");
+  const productsView = document.getElementById("productsView");
+  const categoriesView = document.getElementById("categoriesView");
+  const productsTitle = document.getElementById("productsTitle");
+  const backBtn = document.getElementById("backBtn");
+  const pageHint = document.getElementById("pageHint");
+  const contactBox = document.getElementById("contactBox");
+
+  // ====== INJECT CONTACT INFO ======
+  document.getElementById("companyName").textContent = COMPANY_NAME;
+  document.getElementById("cCompany").textContent = COMPANY_NAME;
+  document.getElementById("cAddress").textContent = ADDRESS;
+
+  const cEmail = document.getElementById("cEmail");
+  cEmail.textContent = EMAIL;
+  cEmail.href = "mailto:" + EMAIL;
+
+  const cWebsite = document.getElementById("cWebsite");
+  cWebsite.textContent = WEBSITE.replace(/^https?:\/\//, "");
+  cWebsite.href = WEBSITE;
+
+  const cWhatsApp = document.getElementById("cWhatsApp");
+  cWhatsApp.textContent = "+971 55 560 3858";
+
+  // ====== HELPERS ======
+  function placeholderImg(text){
+    return "https://via.placeholder.com/500x350?text=" + encodeURIComponent(text);
+  }
+
+  function renderCategories(){
+    categoriesGrid.innerHTML = "";
+    DATA.forEach(cat => {
+      const el = document.createElement("div");
+      el.className = "card";
+      el.onclick = () => openCategory(cat.id);
+      el.innerHTML = `
+        <div class="icon">${cat.iconText}</div>
+        <h3 class="title">${cat.name}</h3>
+        <p class="sub">${cat.products.length} products</p>
+        <span class="tag">Tap to view</span>
+      `;
+      categoriesGrid.appendChild(el);
+    });
+  }
+
+  function openCategory(categoryId){
+    const cat = DATA.find(c => c.id === categoryId);
+    if(!cat) return;
+
+    // hide contact, show products view
+    contactBox.classList.add("hidden");
+    categoriesView.classList.add("hidden");
+    productsView.classList.remove("hidden");
+    backBtn.style.display = "inline-block";
+    productsTitle.textContent = cat.name + " Products";
+    pageHint.textContent = "Tap any product to ask price on WhatsApp.";
+
+    productsGrid.innerHTML = "";
+
+    cat.products.forEach((pName, idx) => {
+      const sku = cat.id.toUpperCase() + "-" + String(idx+1).padStart(3,"0");
+      const el = document.createElement("div");
+      el.className = "card";
+      el.onclick = () => openWhatsApp(cat.name, pName, sku);
+      el.innerHTML = `
+        <img class="productImg" src="${placeholderImg(pName)}" alt="${pName}">
+        <h3 class="title">${pName}</h3>
+        <p class="sub">SKU: ${sku}</p>
+        <span class="tag">Tap for price</span>
+      `;
+      productsGrid.appendChild(el);
+    });
+  }
+
+  function goHome(){
+    productsView.classList.add("hidden");
+    categoriesView.classList.remove("hidden");
+    backBtn.style.display = "none";
+    pageHint.textContent = "Select a category to view products.";
+  }
+
+  function toggleContact(){
+    const isHidden = contactBox.classList.contains("hidden");
+    contactBox.classList.toggle("hidden");
+
+    if(isHidden){
+      goHome();
+      pageHint.textContent = "Contact details shown below.";
+      const msg = `Hello ${COMPANY_NAME}, I want product prices & details.`;
+      cWhatsApp.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+      cWhatsApp.target = "_blank";
+    } else {
+      pageHint.textContent = "Select a category to view products.";
+    }
+  }
+
+  function openWhatsApp(categoryName, productName, sku){
+    const message =
+`Hello ${COMPANY_NAME},
+I want price & availability.
+
+Category: ${categoryName}
+Product: ${productName}
+SKU: ${sku}
+
+Please share wholesale price & minimum order.`;
+
+    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+  }
+
+  renderCategories();
+</script>
 
 </body>
 </html>
